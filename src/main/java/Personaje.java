@@ -73,23 +73,42 @@ public class Personaje {
                         vidaEnemigo -= danio;
                         System.out.println("Usaste " + ataques[opcionAtaque - 1] + ". El enemigo pierde " + danio + " de vida. Vida del enemigo restante : " + vidaEnemigo);
                     } else {
+
                         System.out.println("Opción no válida. Perdiste la oportunidadde atacar");
                     }
                 } else {
 
                     System.out.println("Opcición no válida. Pierdes la oportunidad de defenderte y atacar ");
-                    continue; //Saltar al siguiente bucle
+                    continue;
+                    //vidaPersonaje -= 1;
+                    //System.out.println("Ahora tienes " + vidaPersonaje + " de vida");
+
                 }
 
                 // Verficar vida nuestro personaje
 
+                if(vidaPersonaje <= 0){
+                    System.out.println("Has muerto!");
+                    break; //Palabra reservada del sistema para cerrar ciclos
+                }
 
+                if (vidaEnemigo <=0) {
+                    System.out.println("Has derrotado al enemigo, has ganado!!");
 
+                    System.out.println("¿Quieres luchar contra otro enemigo? (si/no)");
+                    String respuesta = scanner.nextLine();
 
+                    if (respuesta.equalsIgnoreCase("sí")) {
+                        vidaEnemigo = 6;
+                    } else {
+                        continuarJuego = false;
+                        System.out.println("Has decidido salir del juego. Nos vemos!");
+                    }
+                }
             }
         }
-
        //mostrarOpcionesDeAtaque(ataques);
+        scanner.close();
     }
     // 3. Crear función para mostrar los ataques disponibles
     public static void mostrarOpcionesDeAtaque(String[] ataques){
