@@ -32,6 +32,13 @@ public class Personaje {
         int vidaPersonaje = 3;
         int vidaEnemigo = 6;
 
+
+
+
+        Enemigo enemigo1 = new Enemigo("zombie", 1);
+        Enemigo enemigo2 = new Enemigo("araña gigante ", 100);
+
+        System.out.println(enemigo1);
         //2. Definición de los ataques
 
         String[] ataques = {"Ataque rápido", "Ataque potente", "Ataque devastador"};
