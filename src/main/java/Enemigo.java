@@ -29,5 +29,14 @@ public class Enemigo {
     public void setVida(int vida) {
         this.vida = vida;
     }
+
+    public void recibirDanio(int danio){
+        this.vida -= danio;
+    }
+
+    public boolean conSanPedro(){
+
+        return vida <= 0;
+    }
 }
 
