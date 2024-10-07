@@ -37,11 +37,33 @@ public class Juego {
                     personaje.recibirDanio(1);
                     System.out.println("Tenías que defenderte primero, el enemigo ataca y te quita vida, te quedan: " + personaje.getVida() + " de vida");
                     atacarEnemigo(scanner);
+                }else {
+                    System.out.println("Opción no válida");
+                    continue;
                 }
 
+                if (personaje.conSanPedro()){
+                    System.out.println("Has muerto, el juego ha terminado");
+                    continuarJuego = false;
+                    break;
+                }
+
+                if (enemigo.conSanPedro()){
+                    System.out.println("Has derrotado al enemigo");
+                    System.out.println("¿Quieres luchar contra otro enemigo? (Si/NO)" );
+                    String respuesta = scanner.nextLine();
+
+                    if (respuesta.equalsIgnoreCase("si")){
+                        enemigo = new Enemigo("Araña gigante", 10);
+
+                    }else {
+                        continuarJuego = false;
+                        System.out.println("Has decidido salir del jeugo, hasta luego");
+                    }
+                }
             }
         }
-
+        scanner.close();
     }
 
     private void atacarEnemigo(Scanner scanner){
