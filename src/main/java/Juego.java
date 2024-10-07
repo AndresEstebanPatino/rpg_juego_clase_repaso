@@ -33,6 +33,10 @@ public class Juego {
                 if (accion.equalsIgnoreCase("escudo")){
                     System.out.println("Usaste el escudo, no pierdes vida");
                     atacarEnemigo(scanner);
+                } else if(accion.equalsIgnoreCase("atacar")){
+                    personaje.recibirDanio(1);
+                    System.out.println("Tenías que defenderte primero, el enemigo ataca y te quita vida, te quedan: " + personaje.getVida() + " de vida");
+                    atacarEnemigo(scanner);
                 }
 
             }
@@ -41,7 +45,7 @@ public class Juego {
     }
 
     private void atacarEnemigo(Scanner scanner){
-        System.out.println("Ahora tienes l oportunidad de atacar");
+        System.out.println("Ahora tienes la oportunidad de atacar");
         mostrarOpcionesDeAtaque();
 
         int opcionAtaque = scanner.nextInt();
@@ -52,7 +56,9 @@ public class Juego {
             enemigo.recibirDanio(danio);
             System.out.println("Usaste" + ataques[opcionAtaque - 1] + ". El enemigo pierde " + danio + " de vida. La vida del enemigo restante es de:  " + enemigo.getVida());
         }
-    }
+
+        }
+
 
     private void mostrarOpcionesDeAtaque(){
         System.out.println("Elige un ataque");
